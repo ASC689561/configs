@@ -122,6 +122,6 @@ xmodmap -e "keycode 167 = End"
 
 alias dc='sudo docker-compose -f docker-compose.yml '
 alias hisg='history | grep '
-alias server172='ssh root@172.104.110.189 '
-alias server117='ssh nbhoa@117.6.16.176 '
+alias ssh172='ssh root@172.104.110.189 '
+alias ssh117='ssh nbhoa@117.6.16.176 '
 alias source='source ~/.bashrc'
