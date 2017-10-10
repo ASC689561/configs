@@ -122,7 +122,3 @@ xmodmap -e "keycode 167 = End"
 
 alias dc='sudo docker-compose -f docker-compose.yml '
 alias hisg='history | grep '
-
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-
