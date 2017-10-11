@@ -126,3 +126,9 @@ alias ssh172='ssh root@172.104.110.189 '
 alias ssh117='ssh nbhoa@117.6.16.176 '
 alias source='source ~/.bashrc'
 alias open='sudo gnome-open '
+alias rmall='sudo rm -rf *'
+alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
+alias docker-rm-all='sudo docker rm $(sudo docker ps -aq)'
+alias docker-rmi-all='docker rmi $(docker images -aq)'
+
+
