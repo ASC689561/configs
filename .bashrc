@@ -119,6 +119,7 @@ fi
 xmodmap -e "keycode 166 = Home"
 xmodmap -e "keycode 167 = End"
 
+export HISTCONTROL=ignoredups
 
 alias dc='sudo docker-compose -f docker-compose.yml '
 alias hisg='history | grep '
@@ -130,5 +131,6 @@ alias rmall='sudo rm -rf *'
 alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias docker-rm-all='sudo docker rm $(sudo docker ps -aq)'
 alias docker-rmi-all='docker rmi $(docker images -aq)'
+alias edit-nginx='sudo nano /etc/nginx/site-available/default && sudo service nginx restart'
 
 
