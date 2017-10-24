@@ -16,8 +16,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=5000
+HISTFILESIZE=7000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -125,12 +125,13 @@ alias dc='sudo docker-compose -f docker-compose.yml '
 alias hisg='history | grep '
 alias ssh172='ssh root@172.104.110.189 '
 alias ssh117='ssh nbhoa@117.6.16.176 '
-alias source='source ~/.bashrc'
+alias sourcebash='sudo nano ~/.bashrc && source ~/.bashrc'
 alias open='sudo gnome-open '
-alias rmall='sudo rm -rf *'
+alias rm='sudo trash -rf'
 alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias docker-rm-all='sudo docker rm $(sudo docker ps -aq)'
 alias docker-rmi-all='docker rmi $(docker images -aq)'
 alias edit-nginx='sudo nano /etc/nginx/site-available/default && sudo service nginx restart'
-
+alias tarc='tar -czvf '
+alias tarx='tar -k -xzvf '
 
