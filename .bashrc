@@ -135,3 +135,4 @@ alias edit-nginx='sudo nano /etc/nginx/site-available/default && sudo service ng
 alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
 alias pip3='sudo python3.6 -m pip '
+alias du='du -hs '
