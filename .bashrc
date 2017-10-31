@@ -136,3 +136,5 @@ alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
 alias pip3='sudo python3.6 -m pip '
 alias du='du -hs '
+alias chmod='sudo chmod -R 777 '
+
