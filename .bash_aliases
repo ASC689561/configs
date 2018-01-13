@@ -3,6 +3,8 @@ xmodmap -e "keycode 167 = End"
 
 export HISTCONTROL=ignoredups
 
+export s117
+export s172="172.104.110.189"
 
 alias hisg='history | grep '
 alias ssh172='ssh root@172.104.110.189 '
