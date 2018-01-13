@@ -12,21 +12,21 @@
 # Use this instead: https://get.docker.com/
 
 DISTNAME=$(lsb_release -a | grep Codename | cut -d':' -f2 | tr -d "\t") &&
-sudo apt-get update -y &&
-sudo apt-get install apt-transport-https ca-certificates -y &&
-sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D &&
+apt-get update -y &&
+apt-get install apt-transport-https ca-certificates -y &&
+apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D &&
 DEBLINE="deb https://apt.dockerproject.org/repo ubuntu-$DISTNAME main" &&
-echo "$DEBLINE" | sudo tee /etc/apt/sources.list.d/docker.list &&
-sudo apt-get update -y &&
-sudo apt-get purge lxc-docker -y &&
-sudo apt-cache policy docker-engine &&
-sudo apt-get install linux-image-extra-$(uname -r) -y &&
-sudo apt-get install apparmor -y &&
-sudo apt-get install docker-engine -y &&
-sudo usermod -aG docker $USER &&
-sudo wget https://github.com/docker/compose/releases/download/1.8.0-rc2/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose &&
-sudo chmod +x /usr/local/bin/docker-compose &&
-sudo su $USER
+echo "$DEBLINE" | tee /etc/apt/sources.list.d/docker.list &&
+apt-get update -y &&
+apt-get purge lxc-docker -y &&
+apt-cache policy docker-engine &&
+apt-get install linux-image-extra-$(uname -r) -y &&
+apt-get install apparmor -y &&
+apt-get install docker-engine -y &&
+usermod -aG docker $USER &&
+wget https://github.com/docker/compose/releases/download/1.8.0-rc2/docker-compose-`uname -s`-`uname -m` -O /usr/local/bin/docker-compose &&
+chmod +x /usr/local/bin/docker-compose &&
+su $USER
 
 # That last bit makes a new terminal in which you re-login, to save logging out and in again
 # To test it's working, try:
