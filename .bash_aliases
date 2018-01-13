@@ -3,13 +3,15 @@ xmodmap -e "keycode 167 = End"
 
 export HISTCONTROL=ignoredups
 
-export s117="117.6.16.176"
-export s172="172.104.110.189"
+export s117="root@117.6.16.176"
+export s172="root@172.104.110.189"
+alias ssh172='ssh ${s172} '
+alias ssh117='ssh ${s117} '
+
 
 alias hisg='history | grep '
-alias ssh172='ssh root@172.104.110.189 '
-alias ssh117='ssh nbhoa@117.6.16.176 '
-alias sourcebash='sudo nano ~/.bashrc && source ~/.bashrc'
+
+alias nanobash='sudo nano ~/.bash_aliases && source ~/.bashrc'
 alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 alias dc='sudo docker-compose -f docker-compose.yml '
