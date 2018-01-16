@@ -3,7 +3,7 @@ xmodmap -e "keycode 167 = End"
 
 export HISTCONTROL=ignoredups
 
-export s117="root@117.6.16.176"
+export s117="nbhoa@117.6.16.176"
 export s172="root@172.104.110.189"
 alias ssh172='ssh ${s172} '
 alias ssh117='ssh ${s117} '
