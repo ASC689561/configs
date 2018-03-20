@@ -18,7 +18,8 @@ alias rm='sudo trash -rf'
 alias dc='sudo docker-compose -f docker-compose.yml '
 alias dc-log='sudo docker-compose -f docker-compose.yml logs -f --tail=100 '
 
-#function dc-fx-strategy(){	docker-compose up --scale strategy=$1;}
+function dc-fx-strategy(){	sudo docker-compose up --scale strategy=$1; }
+
 alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias docker-ps='sudo docker ps'
 alias docker-rm-all='sudo docker rm $(sudo docker ps -aq)'
