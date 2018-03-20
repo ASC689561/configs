@@ -7,6 +7,7 @@ alias ssh172='ssh root@172.104.110.189 '
 alias ssh117='ssh nbhoa@117.6.16.176 '
 
 
+
 alias hisg='history | grep '
 
 alias edit-alias='sudo nano ~/.bash_aliases && source ~/.bash_aliases'
