@@ -19,6 +19,16 @@ alias dc='sudo docker-compose -f docker-compose.yml '
 alias dc-log='sudo docker-compose -f docker-compose.yml logs -f --tail=100 '
 
 function dc-fxworker(){ cd /opt/projects/fx/fxworker && sudo docker-compose up --scale fxworker=$1; }
+backup () { 
+    for file in "$@"; do
+        local new=${file}_$(date '+%Y-%m-%d_%H-%M-%S')
+        while [[ -f $new ]]; do
+            new+="~";
+        done;
+        printf "copying '%s' to '%s'\n" "$file" "$new";
+        cp -ipr "$file" "$new";
+    done
+}
 
 alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias docker-ps='sudo docker ps'
