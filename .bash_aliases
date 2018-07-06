@@ -34,12 +34,13 @@ alias docker-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias docker-ps='sudo docker ps'
 alias docker-rm-all='sudo docker rm $(sudo docker ps -aq)'
 alias docker-rm-exited='sudo docker ps -a | grep Exit | cut -d " " -f 1 | xargs sudo docker rm'
-alias docker-rmi-none='sudo docker rmi $(docker images -f "dangling=true" -q)'
-alias docker-rmi-all='docker rmi $(docker images -aq)'
+alias docker-rmi-none='sudo docker rmi $(sudo docker images -f "dangling=true" -q)'
+alias docker-rmi-all='sudo docker rmi $(sudo docker images -aq)'
+alias docker-stats='sudo docker stats'
 
 alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
 alias pip3='sudo python3.6 -m pip '
-alias du='du -hs '
+
 alias chmodall='sudo chmod -R 777 '
 
