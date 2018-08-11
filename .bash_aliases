@@ -15,6 +15,22 @@ alias po='popd'
 alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 
+
+
+
+
+sshuttles(){
+  
+	if [ "$1" = "172" ]; then 
+		sshuttle -r root@172.104.110.189 0/0
+	fi
+
+        
+	if [ "$1" = "117" ]; then 
+		sshuttle -r root@117.6.16.176 0/0
+	fi 
+}
+
 sshs(){
   
 	if [ "$1" = "172" ]; then 
