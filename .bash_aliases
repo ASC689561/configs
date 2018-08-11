@@ -16,28 +16,30 @@ alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 
 sshs(){
+	echo "$1"        
   
-	if [ "$1"=="172" ]; then 
+	if [ "$1" = "172" ]; then 
+		echo "172"
 		ssh -t root@172.104.110.189
 	fi
 
         
-	if [ "$1"=="117" ]; then 
-		ssh nbhoa@117.6.16.176 
+	if [ "$1" = "117" ]; then 
+		ssh -t nbhoa@117.6.16.176 
 	fi 
 }
 
 
 syn  () { 
         
-	if [ "$1"=="172" ]; then 
+	if [ "$1" = "172" ]; then 
 		target=$(dirname "$2")
 		echo $target
 		rsync -avhz "$2" root@172.104.110.189:$target 
 	fi
 
         
-	if [ "$1"=="117" ]; then 
+	if [ "$1" = "117" ]; then 
 		target=$(dirname "$2")
 		echo $target
 		rsync -avhz "$2" root@117.6.16.176:$target 
