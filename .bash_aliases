@@ -16,10 +16,8 @@ alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 
 sshs(){
-	echo "$1"        
   
 	if [ "$1" = "172" ]; then 
-		echo "172"
 		ssh -t root@172.104.110.189
 	fi
 
