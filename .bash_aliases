@@ -58,6 +58,8 @@ backup () {
         done;
         printf "copying '%s' to '%s'\n" "$file" "$new";
         cp -ipr "$file" "$new";
+	zip -rm "$new".zip "$new";
+	du -sh "$new".zip
     done
 }
 
