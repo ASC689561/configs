@@ -1,10 +1,7 @@
+#!/usr/bin/env bash
 xmodmap -e "keycode 166 = Home"
 xmodmap -e "keycode 167 = End"
 export HISTCONTROL=ignoredups
-
-
-alias ssh172=''
-alias ssh117=''
 
 alias hisg='history | grep '
 alias edit-alias='sudo nano ~/.bash_aliases && source ~/.bash_aliases'
@@ -15,55 +12,45 @@ alias po='popd'
 alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 
+get_server(){
+    case   "$1" in
+        "172")
+        echo "root@172.104.110.189"
+        ;;
+        "117")
+        echo "root@117.6.16.176"
+        ;;
+        *)
+     esac
 
+}
 
+rsyncs () {
+    server=$(get_server "$1")
+    target=$(dirname "$2")
+    echo $target
 
+    if [[ "${@#-r}" = "$@" ]]
+    then
+        rsync -avhz $2 $server:$target --delete
+    else
+        rsync -avhz $server:$2 $target --delete
+    fi
+}
 
 sshuttles(){
-  
-	if [ "$1" = "172" ]; then 
-		sshuttle -r root@172.104.110.189 0/0
-	fi
-
-        
-	if [ "$1" = "117" ]; then 
-		sshuttle -r root@117.6.16.176 0/0
-	fi 
+    server=$(get_server "$1")
+    sshuttle -r $server 0/0
 }
+
 
 sshs(){
-  
-	if [ "$1" = "172" ]; then 
-		ssh -t root@172.104.110.189
-	fi
-
-        
-	if [ "$1" = "117" ]; then 
-		ssh -t nbhoa@117.6.16.176 
-	fi 
+    server=$(get_server "$1")
+    ssh -t $server
 }
 
 
-syn  () { 
-        
-	if [ "$1" = "172" ]; then 
-		target=$(dirname "$2")
-		echo $target
-		rsync -avhz "$2" root@172.104.110.189:$target 
-	fi
-
-        
-	if [ "$1" = "117" ]; then 
-		target=$(dirname "$2")
-		echo $target
-		rsync -avhz "$2" root@117.6.16.176:$target 
-	fi
-
-
-}
-
-
-backup () { 
+backup () {
     for file in "$@"; do
         local new=${file}_$(date '+%Y-%m-%d_%H-%M-%S')
         while [[ -f $new ]]; do
