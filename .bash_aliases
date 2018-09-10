@@ -7,10 +7,11 @@ alias hisg='history | grep '
 alias edit-alias='sudo nano ~/.bash_aliases && source ~/.bash_aliases'
 alias edit-nginx='sudo nano /etc/nginx/sites-available/default && sudo service nginx restart'
 
-alias pu='pushd .'
+alias pu='pushd . && cd '
 alias po='popd'
 alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
+
 
 get_server(){
     case   "$1" in
