@@ -31,13 +31,14 @@ get_server(){
 rsyncs () {
     server=$(get_server "$1")
     target=$(dirname "$2")
-    echo $target
 
     if [[ "${@#-r}" = "$@" ]]
     then
-        rsync -avhz $2 $server:$target --delete
+        echo rsync -pavhzR $2 $1:$target
+        rsync -pavhzR $2 $server:$target
     else
-        rsync -avhz $server:$2 $target --delete
+        echo rsync -pavhzR $1:$2 $target
+        rsync -pavhzR $server:$2 $target
     fi
 }
 
