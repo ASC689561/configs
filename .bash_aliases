@@ -68,6 +68,12 @@ backup () {
     done
 }
 
+redis_delete(){
+    redis-cli -h 167.114.98.168 -p 30202 KEYS $1 | xargs redis-cli -h 167.114.98.168 -p 30202 DEL
+}
+
+
+
 alias dc-stop-all='sudo docker stop $(sudo docker ps -aq)'
 alias dc-ps='sudo docker ps'
 alias dc-rm-all='sudo docker rm $(sudo docker ps -aq)'
