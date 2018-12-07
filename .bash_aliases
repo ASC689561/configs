@@ -4,8 +4,7 @@ xmodmap -e "keycode 167 = End"
 export HISTCONTROL=ignoredups
 
 alias hisg='history | grep '
-alias edit-alias='sudo nano ~/.bash_aliases && source ~/.bash_aliases'
-alias edit-nginx='sudo nano /etc/nginx/sites-available/default && sudo service nginx restart'
+alias edit-alias='sudo nano ~/configs/.bash_aliases && source ~/configs/.bash_aliases'
 
 alias pu='pushd . && cd '
 alias po='popd'
@@ -15,15 +14,33 @@ alias rm='sudo trash -rf'
 
 get_server(){
     case   "$1" in
+	"19")
+	echo "nbhoa@10.0.6.19"
+	;;
+	"21")
+	echo "nbhoa@10.0.6.21"
+	;;
+	"20")
+	echo "nbhoa@10.0.6.20"
+	;;
         "172")
         echo "root@172.104.110.189"
         ;;
         "117")
         echo "root@117.6.16.176"
         ;;
+	"99")
+	echo "admin@192.168.15.99"
+	;;
+        "51")
+        echo "root@51.68.214.228"
+        ;;
         "167")
         echo "root@167.114.98.168"
         ;;
+	"13")
+	echo "nttung@10.0.6.13"
+	;;
         *)
      esac
 
@@ -35,11 +52,11 @@ rsyncs () {
 
     if [[ "${@#-r}" = "$@" ]]
     then
-        echo rsync -pavhzR $2 $1:$target
-        rsync -pavhzR $2 $server:$target
+        echo rsync -avhz $2 $1:$target
+        rsync -avhz $2 $server:$target
     else
-        echo rsync -pavhzR $1:$2 $target
-        rsync -pavhzR $server:$2 $target
+        echo rsync -avhz $1:$2 $target
+        rsync -avhz $server:$2 $target
     fi
 }
 
@@ -79,6 +96,6 @@ alias dc-stats='sudo docker stats'
 alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
 alias pip3='sudo python3.6 -m pip '
-
+alias kcn='kubectl config set-context $(kubectl config current-context) --namespace '
 alias chmodall='sudo chmod -R 777 '
 
