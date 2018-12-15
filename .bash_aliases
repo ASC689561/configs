@@ -103,5 +103,7 @@ alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
 alias pip3='sudo python3.6 -m pip '
 alias kcn='kubectl config set-context $(kubectl config current-context) --namespace '
+alias ktop='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
 alias chmodall='sudo chmod -R 777 '
 
