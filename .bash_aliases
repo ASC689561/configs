@@ -89,6 +89,10 @@ redis_delete(){
     redis-cli -h 167.114.98.168 -p 30202 KEYS $1 | xargs redis-cli -h 167.114.98.168 -p 30202 DEL
 }
 
+connect_private(){
+    ssh -f -N -R $1:localhost:22 root@167.114.98.168
+}
+
 
 
 alias dc-stop-all='sudo docker stop $(sudo docker ps -aq)'
