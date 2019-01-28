@@ -20,6 +20,9 @@ get_server(){
 	"21")
 	echo "nbhoa@10.0.6.21"
 	;;
+	"35")
+	echo "asc686f61@35.190.141.93"
+	;;
 	"20")
 	echo "nbhoa@10.0.6.20"
 	;;
@@ -30,7 +33,16 @@ get_server(){
         echo "root@117.6.16.176"
         ;;
 	"99")
-	echo "admin@192.168.15.99"
+	echo "administrator@192.168.15.99"
+        ;;
+	"11")
+	echo "administrator@192.168.15.11"
+        ;;
+	"12")
+	echo "administrator@192.168.15.12"
+        ;;
+	"13")
+	echo "administrator@192.168.15.13"
 	;;
         "51")
         echo "root@51.68.214.228"
