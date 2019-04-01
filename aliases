@@ -11,6 +11,10 @@ alias po='popd'
 alias open='sudo gnome-open '
 alias rm='sudo trash -rf'
 
+qr(){
+	qrencode -o - "$1" | display
+}
+
 
 get_server(){
     case   "$1" in
