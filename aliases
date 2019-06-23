@@ -34,7 +34,7 @@ get_server(){
         echo "root@172.104.110.189"
         ;;
         "117")
-        echo "root@117.6.16.176"
+        echo "administrator@117.6.16.176"
         ;;
 	"99")
 	echo "administrator@192.168.15.99"
