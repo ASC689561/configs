@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
-xmodmap -e "keycode 166 = Home"
-xmodmap -e "keycode 167 = End"
+if [ `cat /proc/sys/kernel/hostname` = "t520" ]
+then
+	xmodmap -e "keycode 166 = Home"
+	xmodmap -e "keycode 167 = End"
+fi
+
 export HISTCONTROL=ignoredups
 
 alias hisg='history | grep '
-alias edit-alias='sudo nano ~/configs/.bash_aliases && source ~/configs/.bash_aliases'
+alias edit-alias='sudo nano ~/configs/aliases && source ~/configs/aliases'
 
 alias pu='pushd . && cd '
 alias po='popd'
@@ -101,9 +105,6 @@ backup () {
     done
 }
 
-redis_delete(){
-    redis-cli -h 167.114.98.168 -p 30202 KEYS $1 | xargs redis-cli -h 167.114.98.168 -p 30202 DEL
-}
 
 connect_private(){
     ssh -f -N -R $1:localhost:22 root@167.114.98.168
