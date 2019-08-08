@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+if [ `cat /proc/sys/kernel/hostname` = "t520" ]
+then
+	xmodmap -e "keycode 166 = Home"
+	xmodmap -e "keycode 167 = End"
+fi
+
+export HISTCONTROL=ignoredups
+
+alias hisg='history | grep '
+alias edit-alias='sudo nano ~/configs/aliases && source ~/configs/aliases'
+
+alias pu='pushd . && cd '
+alias po='popd'
+alias open='sudo gnome-open '
+alias rm='sudo trash -rf'
+
+qr(){
+	qrencode -o - "$1" | display
+}
+
+
+get_server(){
+    case   "$1" in
+	"19")
+	echo "nbhoa@10.0.6.19"
+	;;
+	"61")
+	echo "asc686f61@61.28.233.52"
+	;;
+	"21")
+	echo "nbhoa@10.0.6.21"
+	;;
+
+	"20")
+	echo "nbhoa@10.0.6.20"
+	;;
+    "117")
+    echo "administrator@117.6.16.176"
+    ;;
+	"99")
+	echo "administrator@192.168.15.99"
+        ;;
+	"11")
+	echo "administrator@192.168.15.11"
+        ;;
+	"12")
+	echo "administrator@192.168.15.12"
+        ;;
+	"13")
+	echo "administrator@192.168.15.13"
+	;;
+	"13")
+	echo "nttung@10.0.6.13"
+	;;
+        *)
+     esac
+
+}
+
+rsyncs () {
+    server=$(get_server "$1")
+    target=$(dirname "$2")
+
+    if [[ "${@#-r}" = "$@" ]]
+    then
+        echo rsync -avhz $2 $1:$target
+        rsync -avhz $2 $server:$target
+    else
+        echo rsync -avhz $1:$2 $target
+        rsync -avhz $server:$2 $target
+    fi
+}
+
+sshuttles(){
+    server=$(get_server "$1")
+    sshuttle -r $server 0/0
+}
+
+
+sshs(){
+    server=$(get_server "$1")
+    echo $server
+    ssh -t $server
+}
+
+
+backup () {
+    for file in "$@"; do
+        local new=${file}_$(date '+%Y-%m-%d_%H-%M-%S')
+        while [[ -f $new ]]; do
+            new+="~";
+        done;
+        printf "copying '%s' to '%s'\n" "$file" "$new";
+        cp -ipr "$file" "$new";
+	zip -rm "$new".zip "$new";
+	du -sh "$new".zip
+    done
+}
+
+
+connect_private(){
+    ssh -f -N -R $1:localhost:22 root@167.114.98.168
+}
+
+
+
+alias dc-stop-all='sudo docker stop $(sudo docker ps -aq)'
+alias dc-ps='sudo docker ps'
+alias dc-rm-all='sudo docker rm $(sudo docker ps -aq)'
+alias dc-rm-exited='sudo docker ps -a | grep Exit | cut -d " " -f 1 | xargs sudo docker rm'
+alias dc-rmi-none='sudo docker rmi $(sudo docker images -f "dangling=true" -q)'
+alias dc-rmi-all='sudo docker rmi $(sudo docker images -aq)'
+alias dc-stats='sudo docker stats'
+
+alias tarc='tar -czvf '
+alias tarx='tar -k -xzvf '
+alias pip3='sudo python3.6 -m pip '
+alias kcn='kubectl config set-context $(kubectl config current-context) --namespace '
+alias ktop='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+
+alias chmodall='sudo chmod -R 777 '
+
