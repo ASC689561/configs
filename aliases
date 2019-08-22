@@ -36,12 +36,22 @@ get_server(){
 	"20")
 	echo "nbhoa@10.0.6.20"
 	;;
-        "172")
-        echo "root@172.104.110.189"
-        ;;
         "117")
         echo "administrator@117.6.16.176"
         ;;
+	"61")
+	echo "asc686f61@61.28.233.52"
+	;;
+	"21")
+	echo "nbhoa@10.0.6.21"
+	;;
+
+	"20")
+	echo "nbhoa@10.0.6.20"
+	;;
+    "117")
+    echo "administrator@117.6.16.176"
+    ;;
 	"99")
 	echo "administrator@192.168.15.99"
         ;;
@@ -56,9 +66,6 @@ get_server(){
 	;;
         "51")
         echo "root@51.68.214.228"
-        ;;
-        "167")
-        echo "root@167.114.98.168"
         ;;
 	"13")
 	echo "nttung@10.0.6.13"
@@ -90,6 +97,7 @@ sshuttles(){
 
 sshs(){
     server=$(get_server "$1")
+    echo $server
     ssh -t $server
 }
 
@@ -127,6 +135,5 @@ alias tarx='tar -k -xzvf '
 alias pip3='sudo python3 -m pip '
 alias kcn='kubectl config set-context $(kubectl config current-context) --namespace '
 alias ktop='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
-
 alias chmodall='sudo chmod -R 777 '
 
