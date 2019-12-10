@@ -129,6 +129,8 @@ alias dc-rm-exited='sudo docker ps -a | grep Exit | cut -d " " -f 1 | xargs sudo
 alias dc-rmi-none='sudo docker rmi $(sudo docker images -f "dangling=true" -q)'
 alias dc-rmi-all='sudo docker rmi $(sudo docker images -aq)'
 alias dc-stats='sudo docker stats'
+alias dc-rmi-5='docker rmi $(docker images -q | tail -n +5)'
+
 
 alias tarc='tar -czvf '
 alias tarx='tar -k -xzvf '
