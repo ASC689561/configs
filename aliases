@@ -90,6 +90,7 @@ alias dc-rmi-none='sudo docker rmi $(sudo docker images -f "dangling=true" -q)'
 alias dc-rmi-all='sudo docker rmi $(sudo docker images -aq)'
 alias dc-stats='sudo docker stats'
 alias dc-rmi-5='docker rmi $(docker images -q | tail -n +5)'
+alias dco='sudo docker-compose'
 
 
 alias tarc='tar -czvf '
